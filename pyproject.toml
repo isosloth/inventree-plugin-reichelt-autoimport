@@ -37,7 +37,7 @@ ReicheltAutoImport = "reichelt_auto_import.core:ReicheltAutoImport"
 where = [""]
 
 [tool.setuptools.dynamic]
-version = {attr = "reichelt_auto_import.PLUGIN_VERSION"} 
+version = {attr = "reichelt_auto_import.version.PLUGIN_VERSION"} 
 
 [tool.ruff]
 exclude = [
