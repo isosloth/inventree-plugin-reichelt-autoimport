@@ -1,0 +1,24 @@
+{
+  "_ImportForm-CmsvOAx3.js": {
+    "file": "assets/ImportForm-CmsvOAx3.js",
+    "name": "ImportForm"
+  },
+  "src/Dashboard.tsx": {
+    "file": "Dashboard-BYyNJCz0.js",
+    "name": "Dashboard",
+    "src": "src/Dashboard.tsx",
+    "isEntry": true,
+    "imports": [
+      "_ImportForm-CmsvOAx3.js"
+    ]
+  },
+  "src/Settings.tsx": {
+    "file": "Settings-B3ZE-3jU.js",
+    "name": "Settings",
+    "src": "src/Settings.tsx",
+    "isEntry": true,
+    "imports": [
+      "_ImportForm-CmsvOAx3.js"
+    ]
+  }
+}

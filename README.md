@@ -66,3 +66,38 @@ breaks, and all technical parameters reported by Reichelt are imported as
 part parameters. Scanning a barcode/QR code whose payload contains a
 Reichelt product URL will trigger the same import automatically.
 
+## Frontend development
+
+The UI (dashboard widget + plugin settings panel) lives in `frontend/` and is
+built with Vite into `reichelt_auto_import/static/`.
+
+**Unlike most Python-only InvenTree plugins, the built `static/` output here
+is committed to git rather than gitignored.** This is intentional: the
+InvenTree *production* Docker image has no Node/npm installed (only its
+internal `dev`/`builder` build stages do), so a plugin install triggered via
+`plugins.txt` (`pip install -e ...` or `pip install git+...`) cannot run a
+frontend build step on the server. If the static output isn't already present
+in the installed source tree, the plugin's UI panels fail to load with a
+"blocked because of a disallowed MIME type" browser error (the static file
+simply doesn't exist -> 404).
+
+**After changing anything under `frontend/src`, rebuild and commit the
+result:**
+
+```bash
+cd frontend
+npm install
+npm run build
+git add ../reichelt_auto_import/static
+```
+
+A pre-commit hook (`scripts/build_frontend_static.sh`) automates this: it
+rebuilds and stages `reichelt_auto_import/static` automatically whenever
+`frontend/` source changes are part of a commit, and fails the commit so you
+can review the rebuilt output before committing it for real. Install it with:
+
+```bash
+pip install pre-commit
+pre-commit install
+```
+

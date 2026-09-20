@@ -17,3 +17,17 @@ repos:
     -   id: biome-check
         additional_dependencies: ["@biomejs/biome@2.0.0"]
         files: ^frontend/src.*\.(js|ts|tsx)$
+-   repo: local
+    hooks:
+    -   id: build-plugin-frontend
+        name: Build plugin frontend (static assets)
+        description: >
+          The InvenTree production image has no Node/npm available, so the
+          built static/ assets must be committed to git rather than built
+          at plugin-install time. This hook rebuilds them whenever the
+          frontend source changes, stages the result, and fails the commit
+          if anything changed so you can review/re-commit the rebuilt files.
+        entry: scripts/build_frontend_static.sh
+        language: script
+        files: ^frontend/(src|package.json|package-lock\.json|vite\.config\.ts|tsconfig.*\.json)
+        pass_filenames: false

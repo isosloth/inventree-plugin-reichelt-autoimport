@@ -36,6 +36,12 @@ ReicheltAutoImport = "reichelt_auto_import.core:ReicheltAutoImport"
 [tool.setuptools.packages.find]
 where = [""]
 
+[tool.setuptools]
+# MANIFEST.in lists reichelt_auto_import/static/* - this ensures those files
+# are also bundled into built wheels (not just sdists), which matters for any
+# non-editable install (e.g. `pip install .` or `pip install git+...`).
+include-package-data = true
+
 [tool.setuptools.dynamic]
 version = {attr = "reichelt_auto_import.version.PLUGIN_VERSION"} 
 
