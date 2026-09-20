@@ -10,7 +10,7 @@ from django.core.exceptions import ValidationError
 from plugin import InvenTreePlugin
 from plugin.mixins import BarcodeMixin, SettingsMixin, UrlsMixin, UserInterfaceMixin
 
-from . import PLUGIN_VERSION
+from .version import PLUGIN_VERSION
 from .client import ReicheltClient
 from .loader import DEFAULT_SOURCE_URL
 from .service import import_reichelt_product, resolve_reichelt_supplier

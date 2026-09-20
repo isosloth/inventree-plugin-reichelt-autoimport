@@ -1,7 +1,6 @@
-from .core import ReicheltAutoImport
-
 """Reichelt Auto Import InvenTree plugin."""
 
-PLUGIN_VERSION = "0.1.1"
+from .core import ReicheltAutoImport
+from .version import PLUGIN_VERSION
 
 __all__ = ["PLUGIN_VERSION", "ReicheltAutoImport"]

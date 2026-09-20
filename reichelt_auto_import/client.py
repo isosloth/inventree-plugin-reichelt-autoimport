@@ -25,7 +25,9 @@ class ReicheltClient:
             raise ValueError("Product URL/Manufacturer part number is required")
 
         url = ""
-        if part.startswith("https://www.reichelt.de/"):
+        if part.startswith("https://www.reichelt.com/") or part.startswith(
+            "https://www.reichelt.de/"
+        ):
             url = part
 
         module = get_reichelt_module(source=self.module_source, timeout=self.timeout)
