@@ -205,7 +205,8 @@ class ReicheltAutoImport(
     # Ref: https://docs.inventree.org/en/latest/plugins/mixins/ui/
     def get_ui_dashboard_items(self, request, context: dict, **kwargs):
         """Return a list of custom dashboard items to be rendered in the InvenTree user interface."""
-        if not request.user or not request.user.is_staff:
+        logger.debug("Getting UI dashboard items for user: %s", request.user)
+        if not request.user:
             return []
 
         return [
